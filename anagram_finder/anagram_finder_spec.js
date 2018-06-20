@@ -36,4 +36,18 @@ describe('AnagramFinder', function () {
     const anagramFinder = new AnagramFinder('word');
     assert.deepStrictEqual(anagramFinder.findAnagrams(['']), []);
   });
+
+  it('should be able to detect an anagram', function() {
+    const anagramFinder = new AnagramFinder('act');
+    assert.strictEqual(anagramFinder.isAnagram('cat'), true);
+    assert.strictEqual(anagramFinder.isAnagram('dog'), false);
+    assert.strictEqual(anagramFinder.isAnagram(''), false);
+    assert.strictEqual(anagramFinder.isAnagram('act'), false);
+  });
+
+  it('should be able to tell if the word contains a given letter', function() {
+    const anagramFinder = new AnagramFinder('act');
+    assert.strictEqual(anagramFinder.containsLetter('a'), true);
+    assert.strictEqual(anagramFinder.containsLetter('z'), false);
+  });
 });
