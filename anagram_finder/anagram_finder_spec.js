@@ -46,8 +46,13 @@ describe('AnagramFinder', function () {
   });
 
   it('should be able to tell if the word contains a given letter', function() {
-    const anagramFinder = new AnagramFinder('act');
-    assert.strictEqual(anagramFinder.containsLetter('a'), true);
-    assert.strictEqual(anagramFinder.containsLetter('z'), false);
+    const anagramFinder = new AnagramFinder('');
+    assert.strictEqual(anagramFinder.containsLetter('act','a'), true);
+    assert.strictEqual(anagramFinder.containsLetter('act', 'z'), false);
+  });
+
+  it('should handle duplicate letters', function() {
+    const anagramFinder = new AnagramFinder('aabb');
+    assert.deepStrictEqual(anagramFinder.findAnagrams(['abbb']), []);
   });
 });

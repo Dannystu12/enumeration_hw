@@ -8,12 +8,13 @@ AnagramFinder.prototype.findAnagrams = function (otherWords) {
 
 AnagramFinder.prototype.isAnagram = function (otherWord){
   if(otherWord === this.word || otherWord.length != this.word.length) return false;
-  otherWordLetters = otherWord.toLowerCase().split('');
-  return otherWordLetters.every(letter => this.containsLetter(letter));
+  const otherWordLetters = otherWord.toLowerCase().split('').sort();
+  const word = this.word.toLowerCase().split('').sort();
+  return otherWordLetters.every((letter, index) => word[index] === otherWordLetters[index]);
 };
 
-AnagramFinder.prototype.containsLetter = function(letter){
-  return this.word.toLowerCase().indexOf(letter.toLowerCase()) !== -1;
+AnagramFinder.prototype.containsLetter = function(word , letter){
+  return word.toLowerCase().indexOf(letter.toLowerCase()) !== -1;
 };
 
 module.exports = AnagramFinder;
